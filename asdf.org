@@ -37,3 +37,8 @@ It may be a good idea to load asdf in the common lisp startup script
 No need. I use SBCL
 
 
+* Configuration
+  Probably not imporant to me. Skipping for now
+  
+
+
