@@ -2,8 +2,8 @@
 * Introduction
 
 ** 3 faces of ASDF
-*** users
-*** writers
-*** build-system-extenders
+- users
+- writers
+- build-system-extenders
     
 ASDF is not a tool library and system installation, only for building
