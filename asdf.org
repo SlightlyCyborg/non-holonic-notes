@@ -9,31 +9,31 @@ Summary of the [[https://orgmode.org/manual/External-links.htmlASDF][ASDF Manual
     
 ASDF is not a tool library and system installation, only for building
 
-** Quick start summary
+* Quick start summary
 
-*** Simple Loading (without Quicklisp)
+** Simple Loading (without Quicklisp)
 - (require "asdf")
 - put code in ~/common-lisp/ or configure ASDF to find my systems*
 - (asdf:load-system "holon")
 
-*** Make ASDF system
+** Make ASDF system
 - make repository directory where ASDF can find it
 - create <name>.asd
 - (asdf:load-system "<name>")
 
 
-** Loading ASDF
-*** Preinstalled ASDF
+* Loading ASDF
+** Preinstalled ASDF
  ASDF is included with all major CL impls, so...
 
 - (require "asdf")
 
 It may be a good idea to load asdf in the common lisp startup script
 
-*** Check if ASDF is loaded
+** Check if ASDF is loaded
 - (asdf:asdf-version)
   
-*** Upgrading ASDF, Replacing Preinstalled ASDF, and Loading from Source
+** Upgrading ASDF, Replacing Preinstalled ASDF, and Loading from Source
 No need. I use SBCL
 
 
