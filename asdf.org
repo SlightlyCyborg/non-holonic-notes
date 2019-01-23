@@ -62,7 +62,28 @@ Lower case names by convention
   
 See Doc link at the top of this org file for more info.
 
+* Defining Systems
+** defsystem
 
+#+NAME: hello-lisp.asd
+#+BEGIN_SRC lisp
+(defsystem "hello-lisp"
+  :description "hello-lisp: a sample Lisp system."
+  :version "0.0.1"
+  :author "Joe User <joe@example.com>"
+  :licence "Public Domain"
+  :depends-on ("optima.ppcre" "command-line-arguments")
+  :components ((:file "packages")
+               (:file "macros" :depends-on ("packages"))
+               (:file "hello" :depends-on ("macros"))))
+#+END_SRC
+
+Notes
+- defines system with 3 files; packages.lisp, macros.lisp, hello.lisp
+- .lisp is implicit
+- example has 2 external system dependencies
+- :description, :version, :author, and :licence are needed for QuickLisp
+- best to keep file as 1 top level form: `defsystem`
   
 
 
