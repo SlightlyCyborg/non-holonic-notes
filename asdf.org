@@ -133,3 +133,16 @@ Key classes are `component` and `operation`
 - component: individual source file or a group of source files and the products produced from it
 - operation: a transformation that can be performed on a component
   
+** Operations
+   An operation object can do things like:
+- compile all its files
+- load the files into a running lisp environment
+- copy its source files into another dir
+  
+Operations can be invoked or simulated.
+
+`operate` is used to invoke an operation object
+
+There are several predefined operation objects in ASDF. There is also an abstract `operation` class to extend the ASDF system with.
+
+
