@@ -7,3 +7,16 @@
 - build-system-extenders
     
 ASDF is not a tool library and system installation, only for building
+
+** Quick start summary
+
+*** Simple Loading (without Quicklisp)
+- (require "asdf")
+- put code in ~/common-lisp/ or configure ASDF to find my systems*
+- (asdf:load-system "holon")
+
+*** Make ASDF system
+- make repository directory where ASDF can find it
+- create <name>.asd
+- (asdf:load-system "<name>")
+
