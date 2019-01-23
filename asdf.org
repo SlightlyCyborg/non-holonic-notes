@@ -40,5 +40,29 @@ No need. I use SBCL
 * Configuration
   Probably not imporant to me. Skipping for now
   
+* Using ASDF
+** Loading a system
+- (asdf:load-system :foo)
+
+On some implementations, ASDF hooks into cl:require, ergo
+- (require :foo)
+
+The system-name is provided as a string, symbol, or keyword.
+Lower case names by convention
+
+** Convenience Functions  
+*** Common Fn's
+- `load-system`
+- `compile-system`
+- `test-system`
+*** UnCommons
+- `require-system`: skips loading already loades systems.
+- `make`: a customizable way to load
+- `operate`: arbitrarily operate on systems
+  
+See Doc link at the top of this org file for more info.
+
+
+  
 
 
