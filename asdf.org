@@ -126,3 +126,10 @@ Notes
 ** defsystem grammer
 See Doc link at top of this file for details.
 
+* ASDF Object model
+
+Key classes are `component` and `operation`
+
+- component: individual source file or a group of source files and the products produced from it
+- operation: a transformation that can be performed on a component
+  
