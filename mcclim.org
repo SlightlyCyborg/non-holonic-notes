@@ -1,1 +1,36 @@
 Notes on the [[https://common-lisp.net/project/mcclim/static/documents/mcclim.pdf][McClim Manual]]
+
+* Introduction
+  
+CLIM is a multilayer graphics system that is customizable at each layer.
+
+The top layer contains:
+- application frames
+- panes
+- gadgets
+
+** How CLIM is Different
+
+CLIM is not just a GUI toolkit, it is an interface manager. 
+It manages everything at the software boundary between human and machine. 
+
+Traditional GUI has an event loop and events are sent to widgets which are handled by event handlers.
+
+Event-driven programming is seen as a virtue by GUI builders, but events are sent in a null context and therefore must be combined in the widget or by some hack.
+
+CLIM has an event loop, but the user of the application layer uses a command loop.
+
+The command loop does the following:
+- Acquires command. (click, key, etc)
+- Command is populated by arguments.
+- Command is called on the arguments.
+- A display routine updates the view of the application logic.
+  
+Instead of attaching event handlers, a CLIM app dev does the following:
+- write CLIM commands that modify application data independently of how the command is evoked.
+- write display routines that turn the application data into visible representations
+- write completion routines (what are these??? IDK)
+- attach commands to view objects and decide how the commands get evoked.
+
+  
+
