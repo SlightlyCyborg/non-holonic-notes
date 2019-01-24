@@ -33,4 +33,16 @@ Instead of attaching event handlers, a CLIM app dev does the following:
 - attach commands to view objects and decide how the commands get evoked.
 
   
+* User manual
+** Building McCLIM
+*** Examples and demos
+McCLIM source comes with some demos and applications
+They are available in Examples and Apps subdirectories
+- clim-demo:demodemo
+
+*** Applications
+- Apps/Listener
+- Apps/Inspector
+- Apps/Debugger
+  
 
