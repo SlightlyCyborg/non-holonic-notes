@@ -1,0 +1,1 @@
+Notes on the [[https://common-lisp.net/project/mcclim/static/documents/mcclim.pdf][McClim Manual]]
