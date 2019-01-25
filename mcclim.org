@@ -45,4 +45,32 @@ They are available in Examples and Apps subdirectories
 - Apps/Inspector
 - Apps/Debugger
   
+** The First Application
+*** Terminology
+- application-frame: top level app
+- panes: blocks to patition gadgets
+- gadgets: the objects in the screen
+  
+*** How McCLIM produces output
+    
+    CLIM panes record the series of operations that generates a pixel based output.
+
+**** Simple application:
+     No internal data structure to keep track of application objects. 
+     It simply produces output as a result of running commands.
+
+**** Application with a static display function
+     Some applications use a display function.
+     A game of tic tac toe would use a display function to draw the board.
+
+**** Applications with a dynamic display function
+     This has internal data structures that has a direct mapping to output.
+     Commands modify the internal structure.
+     The display function is run after each command loop iteration
+     
+**** Applications with an incremental static display function
+     This uses `updating-output` to only update output when needded.
+     
+**** Programmer does it all
+     This way requires the programmer to keep track of all output records on the display list and to inform CLIM about modifications to it..
 
