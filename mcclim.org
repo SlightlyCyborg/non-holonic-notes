@@ -143,3 +143,59 @@ In the example there is a pane called ~int~ of type ~interactor~ that is 400 uni
 The ~:layouts~ element defines how to organize panes into a hierarchy. Default is used here because we only have 1 pane.
 
 
+*** Adding Functionality
+An ~application-pane~ is subclass of a ~stream~ where application objects are placed.
+
+Here is an improved example:
+#+BEGIN_SRC lisp
+(in-package :common-lisp-user)
+
+(defpackage :my-first-app
+;; Imports the appropriate CLIM library
+(:use :clim :clim-lisp)
+
+;; The package will only export a function to run the app
+(:export run-my-first-app))
+
+;; Good practice
+(in-package :my-first-app)
+
+;; Definition of the structure of a minimum app
+(define-application-frame superapp ()
+  ()
+  (:pointer-documentation t)
+  (:panes
+    (int :interactor
+    :height 200
+    :width 600))
+    
+    (app :application
+       :display-time nil
+       :height 400
+       :width 600)
+
+    (:layouts
+       (default (vertically ()
+                    app int)))
+		    
+    (define-superapp-command (com-quit :name t) ()
+        (frame-exit *application-frame*))
+	
+    (define-superapp-command (com-parity :name t) ((number 'integer))
+        (format t "~a is ~a~%" number
+           (if (oddp number)
+	     "odd"
+	     "even"))))
+;; Now that the structure of the app is defined, need a function
+;; to launch an instance of this app. (The user could run
+;; several instances of the same app.)
+(defun run-my-first-app ()
+   (run-frame-top-level (make-application-frame ’my-first-clim-app)))
+#+END_SRC
+
+A new app pane was added.
+
+~:display-time nil~ tells the pane not to clear after each iteration of the command loop.
+This is important because there is no ~display~ function defined, so nothing would have been displayed without this option.
+
+~define-<name>-command~ just defines a command.
