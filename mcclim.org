@@ -74,3 +74,72 @@ They are available in Examples and Apps subdirectories
 **** Programmer does it all
      This way requires the programmer to keep track of all output records on the display list and to inform CLIM about modifications to it..
 
+*** Panes and Gadgets
+
+CLIM apps are made from a heirarchy of panes and gadgets
+
+Frequently used gadgets:
+- buttons
+- sliders
+
+Frequently used panes
+- hbox
+- vbox
+- hrack
+  
+*** A First Attempt
+#+BEGIN_SRC lisp
+(in-package :common-lisp-user)
+
+(defpackage :my-first-app
+;; Imports the appropriate CLIM library
+(:use :clim :clim-lisp)
+
+;; The package will only export a function to run the app
+(:export run-my-first-app))
+
+;; Good practice
+(in-package :my-first-app)
+
+;; Definition of the structure of a minimum app
+(define-application-frame my-first-clim-app ()
+  ()
+;; This app only has 1 pane
+  (:panes
+    (my-interactor :interactor
+    :height 400
+    :width 600))
+    ;; :layouts section describes how the pane is positioned inside
+    ;; the application frame.
+    ;; With 1 pane, no point getting complicated, Default is fine...
+    (:layouts
+	(my-default my-interactor)))
+;; Now that the structure of the app is defined, need a function
+;; to launch an instance of this app. (The user could run
+;; several instances of the same app.)
+(defun run-my-first-app ()
+   (run-frame-top-level (make-application-frame ’my-first-clim-app)))
+#+END_SRC
+
+The app uses two packages: clim and clim-lisp
+- The clim packages contains all symbols needed for using clim
+- the clim-lisp package replaces the common-lisp package. why?
+
+The main function ~run-my-first-app~ is exported
+
+The define-application-frame takes the following arguments:
+- the name of the app
+- aditional superclasses
+- list of CLOS slots to be added.
+
+The current application frame instance is held in ~*application-frame*~
+
+The rest of the definition contains ~:panes~ and ~:layouts~
+
+Each pane has a name, a type, and some other options used to instantiate that particular type of pane.
+
+In the example there is a pane called ~int~ of type ~interactor~ that is 400 units by 600 units. 
+
+The ~:layouts~ element defines how to organize panes into a hierarchy. Default is used here because we only have 1 pane.
+
+
