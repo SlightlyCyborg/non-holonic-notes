@@ -559,3 +559,11 @@ The view switching method ~display-pane-with-view~ is specialized for a person a
 View-switching by saving the new view into ~default-view~ slot and fetching it in the display method with ~stream-default-view~ seems like a hack.
 
 Why not use a variable called ~current-view~?
+
+** Command Tables
+
+A command table is an object used to determine which commands are available in a specific context.
+
+A default command table is defined when ~define-application-frame~ is called.
+
+Each command table has a name and can be found (and setf?) using ~(clim:find-command-table (name &key (errorp t)))~
