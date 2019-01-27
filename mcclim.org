@@ -567,3 +567,27 @@ A command table is an object used to determine which commands are available in a
 A default command table is defined when ~define-application-frame~ is called.
 
 Each command table has a name and can be found (and setf?) using ~(clim:find-command-table (name &key (errorp t)))~
+
+** Menu Bar
+
+Menubar creation is easy
+
+#+begin_src lisp
+(clim:define-application-frame foo ()
+  ;;...
+  (:menu-bar t)
+  ;;...
+  )
+#+end_src
+
+Menu bar can be changed by changing the ~command-table~ associated with the current frame
+
+#+begin_src lisp
+(setf (frame-command-table *application-frame*)
+      new-command-table)
+#+end_src
+
+~clim:add-menu-item-to-command-table~ can be used to add menu items.
+
+~clim:remove-menu-item-from-command-table~ is the inverse.
+
